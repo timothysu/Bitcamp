@@ -9,7 +9,10 @@ var MongoClient = require('mongodb').MongoClient
 var db_url = 'mongodb://localhost:27017/Bitcamp';
 
 router.get('/', function(req, res) {
-    // Push Front End Form
+  res.writeHead(302, {
+      'Location': './group.html'
+  });
+  res.end();
 });
 
 /* POST for data */

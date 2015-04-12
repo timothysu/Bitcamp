@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Free Times</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script>
+        $.get( "bitcamp.timofeo.com/showGroup", function( data ) {
+            //$( ".times" ).html( data );
+            //alert( "Load was performed." );
+            for (var event in data) {
+                var start = data[event["startTime"]];
+                var startYear = start.substring(0,3);
+                var startMonth = start.substring(5,6);
+                var startDay = start.substring(8,9);
+                var startHour = start.substring(11,12);
+                var startMin = start.substring(14,15);
+                var end = data[event["endTime"]];
+                var endYear = end.substring(0,3);
+                var endMonth = end.substring(5,6);
+                var endDay = end.substring(8,9);
+                var endHour = end.substring(11,12);
+                var endMin = end.substring(14,15);
+                $("ul").append("<li>"+startHour+":"+startMin+" "+startMonth+"/"+startDay+"/"+startYear
+                +" - "+endHour+":"+endMin+" "+endMonth+"/"+endDay+"/"+endYear+"</li>");
+            }
+
+        });
+    </script>
+</head>
+<body>
+
+    <div class="container">
+        <div class="card card-container">
+            <h1>Calendar Match</h1>
+
+            <!-- <img class="profile-img-card" src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" alt="" /> -->
+            <img id="profile-img" class="profile-img-card" src="test.png" />
+            <p id="profile-name" class="profile-name-card"></p>
+            <h2>Free Times</h2>
+            <div class="times">
+                <ul>
+
+                </ul>
+            </div>
+        </div><!-- /card-container -->
+    </div><!-- /container -->
+</body>
+</html>
