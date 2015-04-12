@@ -60,9 +60,9 @@ router.get('/', function(req, res) {
             //These objects are of the format in sampleCalendarJSON.txt
 
             //PUT CODE BELOW HERE **********************
-
-            console.log(calendars);
-            console.log('divier');
+            var calendar = JSON.stringify(calendars);
+            //console.log(calendars);
+            //console.log('divier');
             var freeTime = [];
             // the :00--4:00 is zero seconds and then -4 b/c new york is -4 timezone form utc
             var currentDate = new Date();
@@ -72,9 +72,9 @@ router.get('/', function(req, res) {
             } else {
                 start = currentDate.getFullYear() + "-" + (currentDate.getMonth() + 1) + "-" + currentDate.getDate() + "T" + currentDate.getHours() + ":" + currentDate.getMinutes() + ":00:-0400:";
             }
-            console.log(start);
+            //console.log(start);
 
-            var items = calendars.items;
+            var items = calendar.items;
             for (var event in items) {
 
                 if (items[event].start != null && items[event].start.dateTime != null && items[event].end.dateTime != null) {
