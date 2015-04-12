@@ -11,6 +11,7 @@ var CLIENT_SECRET = 'forMWLuaj90Ary0OZPSbddz_';
 var REDIRECT_URL = 'http://localhost/oauth2callback';
 
 
+
 var oauth2Client = new OAuth2(CLIENT_ID, CLIENT_SECRET, REDIRECT_URL);
 
 router.get('/', function(req, res) {

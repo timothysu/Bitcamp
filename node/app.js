@@ -17,6 +17,7 @@ var users = require('./routes/users');
 var request = require('./routes/request');
 var auth = require('./routes/auth');
 var oauth2callback = require('./routes/oauth2callback');
+var setGroup = require('./routes/setGroup');
 
 var app = express();
 var db = new Store("data",{type:'single'});
@@ -38,6 +39,7 @@ app.use('/users', users);
 app.use('/request', request);
 app.use('/auth', auth);
 app.use('/oauth2callback', oauth2callback);
+app.use('/setGroup', setGroup);
 
 //app.use('/5cf53e3e8057acdda822d596dcbc7e7c.txt', users);
 
