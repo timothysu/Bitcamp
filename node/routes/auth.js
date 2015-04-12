@@ -42,8 +42,10 @@ router.get('/', function(req, res) {
         scope: 'https://www.googleapis.com/auth/calendar.readonly' // can be a space-delimited string or an array of scopes
     });
 
-    res.send(url);
-    res.close();
+    res.writeHead(302, {
+        'Location': url
+    });
+    res.end();
 
     //res.contentType('application/json');
     //res.send(JSON.stringify(jsonBuilder));
