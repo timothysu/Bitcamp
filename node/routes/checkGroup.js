@@ -29,7 +29,7 @@ router.get('/', function(req, res) {
             if (result.length > 0) {
                 //User has a group, proceed to show group
                 res.writeHead(302, {
-                    'Location': './showGroup'
+                    'Location': './display.html'
                 });
             } else {
                 res.writeHead(302, {
