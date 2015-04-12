@@ -72,7 +72,7 @@ router.get('/', function(req, res) {
             }
             console.log(start);
 
-            var items = calendar.items;
+            var items = calendars.items;
             for (var event in items) {
 
                 if (items[event].start != null && items[event].start.dateTime != null && items[event].end.dateTime != null) {
