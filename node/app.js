@@ -7,12 +7,16 @@ var bodyParser = require('body-parser');
 var Store = require('jfs');
 var uuid = require('node-uuid');
 var gm = require('gm');
+var readline = require('readline');
+
 var fs = require('fs');
 var serverconfig = JSON.parse(require('./serverConfig.js')());
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var request = require('./routes/request');
+var auth = require('./routes/auth');
+var oauth2callback = require('./routes/oauth2callback');
 
 var app = express();
 var db = new Store("data",{type:'single'});
@@ -32,6 +36,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', routes);
 app.use('/users', users);
 app.use('/request', request);
+app.use('/auth', auth);
+app.use('/oauth2callback', oauth2callback);
 
 //app.use('/5cf53e3e8057acdda822d596dcbc7e7c.txt', users);
 
