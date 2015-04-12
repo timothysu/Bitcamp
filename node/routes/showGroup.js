@@ -61,6 +61,8 @@ router.get('/', function(req, res) {
 
             //PUT CODE BELOW HERE **********************
 
+            console.log(calendars);
+            console.log('divier');
             var freeTime = [];
             // the :00--4:00 is zero seconds and then -4 b/c new york is -4 timezone form utc
             var currentDate = new Date();
@@ -80,6 +82,7 @@ router.get('/', function(req, res) {
                     start = items[event].end.dateTime;
                 }
             }
+            console.log(freeTime);
 
             var result = freeTime;
 
