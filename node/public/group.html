@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Groups</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+</head>
+<body>
+
+<div class="container">
+    <div class="card card-container">
+        <h1>Calendar Match</h1>
+
+        <!-- <img class="profile-img-card" src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" alt="" /> -->
+        <img id="profile-img" class="profile-img-card" src="test.png" />
+        <p id="profile-name" class="profile-name-card"></p>
+        <h2>Create Groups</h2>
+        <h4>Input emails each on their own line</h4>
+        <form class="form-signin" action="http://bitcamp.timofeo.com/setGroup" method="post">
+            <span id="reauth-email" class="reauth-email"></span>
+            <input type="text" name="emails" id="inputEmails" class="form-control" placeholder="emails" required>
+            <div id="remember" class="checkbox">
+            </div>
+            <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Create</button>
+        </form><!-- /form -->
+    </div><!-- /card-container -->
+</div><!-- /container -->
+
+
+    <!--<section class = "second">
+        <ul class = "second_menu">
+            <li class="test"><a href="#home">Home</a></li>
+            <li class = "test right"><a href="#news">+</a></li>
+
+        </ul>
+
+
+    </section>
+
+    <section class ="third">
+        <p> list of people within this group</p>
+        <input type ="date" name = "start" value = "start_date">
+        <input type ="date" name = "end" value = "end_date">
+        <button>Go</button>
+
+    </section>
+
+    <section class ="fourth">
+
+    </section> -->
+</body>
+</html>

@@ -11,7 +11,7 @@ var cookieParser = require('cookie-parser');
 var plus = google.plus('v1');
 var CLIENT_ID = '541057803748-kbh3vjrs4mlvlrcd09t4lomfc171ulra.apps.googleusercontent.com';
 var CLIENT_SECRET = 'forMWLuaj90Ary0OZPSbddz_';
-var REDIRECT_URL = 'http://localhost/oauth2callback';
+var REDIRECT_URL = 'http://bitcamp.timofeo.com/oauth2callback';
 
 
 var oauth2Client = new OAuth2(CLIENT_ID, CLIENT_SECRET, REDIRECT_URL);
