@@ -15,13 +15,13 @@
                 var startMonth = start.substring(5,6);
                 var startDay = start.substring(8,9);
                 var startHour = start.substring(11,12);
-                var startMin = start.substring(13,14);
+                var startMin = start.substring(14,15);
                 var end = data[event["endTime"]];
                 var endYear = end.substring(0,3);
                 var endMonth = end.substring(5,6);
                 var endDay = end.substring(8,9);
                 var endHour = end.substring(11,12);
-                var endMin = end.substring(13,14);
+                var endMin = end.substring(14,15);
                 $("ul").append("<li>"+startHour+":"+startMin+" "+startMonth+"/"+startDay+"/"+startYear
                 +" - "+endHour+":"+endMin+" "+endMonth+"/"+endDay+"/"+endYear+"</li>");
             }
