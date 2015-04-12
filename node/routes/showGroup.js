@@ -61,14 +61,33 @@ router.get('/', function(req, res) {
 
             //PUT CODE BELOW HERE **********************
 
+            var freeTime = [];
+            // the :00--4:00 is zero seconds and then -4 b/c new york is -4 timezone form utc
+            var currentDate = new Date();
+            var start;
+            if ((Number(currentDate.getMonth()) + 1) < 10) {
+                start = currentDate.getFullYear() + "-" + "0" + (currentDate.getMonth() + 1) + "-" + currentDate.getDate() + "T" + currentDate.getHours() + ":" + currentDate.getMinutes() + ":00:-0400:";
+            } else {
+                start = currentDate.getFullYear() + "-" + (currentDate.getMonth() + 1) + "-" + currentDate.getDate() + "T" + currentDate.getHours() + ":" + currentDate.getMinutes() + ":00:-0400:";
+            }
+            console.log(start);
 
+            var items = calendar.items;
+            for (var event in items) {
 
+                if (items[event].start != null && items[event].start.dateTime != null && items[event].end.dateTime != null) {
+                    freeTime.push({event: {startTime: start, endTime: items[event].start.dateTime}});
+                    start = items[event].end.dateTime;
+                }
+            }
+
+            var result = freeTime;
 
 
             //var result = {};  // PUT RESULT OUTPUT HERE (in your chosen JSON format)
 
             //TESTING
-            var result = calendars;
+            //var result = calendars;
 
             //PUT CODE ABOVE HERE **********************
 
