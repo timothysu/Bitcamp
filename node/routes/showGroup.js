@@ -60,7 +60,7 @@ router.get('/', function(req, res) {
             //These objects are of the format in sampleCalendarJSON.txt
 
             //PUT CODE BELOW HERE **********************
-            var calendar = JSON.stringify(calendars);
+
             //console.log(calendars);
             //console.log('divier');
             var freeTime = [];
@@ -74,7 +74,7 @@ router.get('/', function(req, res) {
             }
             //console.log(start);
 
-            var items = calendar.items;
+            var items = calendars[0].items;
             for (var event in items) {
 
                 if (items[event].start != null && items[event].start.dateTime != null && items[event].end.dateTime != null) {
