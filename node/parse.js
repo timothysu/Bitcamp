@@ -11,7 +11,7 @@ fs.readFile('./sampleCalendarJSON.txt', function(err, result) {
     // the :00--4:00 is zero seconds and then -4 b/c new york is -4 timezone form utc
     var currentDate = new Date();
     var start;
-    if (parseInt(("4", 10) + 1) < 10) {
+    if ((Number(currentDate.getMonth()) + 1) < 10) {
         start = currentDate.getFullYear() + "-" + "0" + (currentDate.getMonth() + 1) + "-" + currentDate.getDate() + "T" + currentDate.getHours() + ":" + currentDate.getMinutes() + ":00:-0400:";
     } else {
         start = currentDate.getFullYear() + "-" + (currentDate.getMonth() + 1) + "-" + currentDate.getDate() + "T" + currentDate.getHours() + ":" + currentDate.getMinutes() + ":00:-0400:";
