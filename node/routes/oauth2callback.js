@@ -72,7 +72,9 @@ router.get('/', function(req, res) {
                         insertDocuments(db, function (err, db) {
                             console.log(err);
                             db.close();
-                            res.location('./checkGroup');
+                            res.writeHead(302, {
+                                'Location': './checkGroup'
+                            });
                             res.end();
                         });
                     });

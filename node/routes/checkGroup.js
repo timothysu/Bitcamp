@@ -9,7 +9,7 @@ var MongoClient = require('mongodb').MongoClient
 var db_url = 'mongodb://localhost:27017/Bitcamp';
 
 /* POST for data */
-router.post('/', function(req, res) {
+router.get('/', function(req, res) {
 
     var user = new Buffer(req.cookies.id, 'base64').toString('ascii');
 
@@ -27,17 +27,7 @@ router.post('/', function(req, res) {
             } else {
                 res.location('./setGroup');
             }
-
-        });
-
-        collection.remove({ id : calendarList.items[0].id }, function(err, result) {
-            // Insert some documents
-            console.log("removed anal virginity");
-            console.log(err);
-            collection.insert(calendar, function (err, result) {
-                console.log("Doin it live");
-                callback(result, db);
-            });
+            callback(result, db);
         });
     }
 
@@ -45,10 +35,9 @@ router.post('/', function(req, res) {
         assert.equal(null, err);
         console.log("Connected correctly to server");
 
-        insertDocuments(db, function (err, db) {
+        lookupUser(db, function (err, db) {
             console.log(err);
             db.close();
-            res.location('./setGroup');
             res.end();
         });
     });
