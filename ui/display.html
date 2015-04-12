@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Free Times</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script>
+        $.get( "bitcamp.timofeo.com/showGroup", function( data ) {
+            $( ".times" ).html( data );
+            alert( "Load was performed." );
+        });
+    </script>
+</head>
+<body>
+
+    <div class="container">
+        <div class="card card-container">
+            <h1>Calendar Match</h1>
+
+            <!-- <img class="profile-img-card" src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" alt="" /> -->
+            <img id="profile-img" class="profile-img-card" src="test.png" />
+            <p id="profile-name" class="profile-name-card"></p>
+            <h2>Free Times</h2>
+            <div class="times"></div>
+        </div><!-- /card-container -->
+    </div><!-- /container -->
+</body>
+</html>
