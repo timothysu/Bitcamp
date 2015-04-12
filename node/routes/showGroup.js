@@ -11,7 +11,7 @@ var db_url = 'mongodb://localhost:27017/Bitcamp';
 /* POST for data */
 router.get('/', function(req, res) {
 
-    var user = new Buffer(req.cookies.id, 'base64').toString('ascii');
+    var user = req.cookies.id;
     var users = [];
 
     var lookupUser = function (db, callback) {
@@ -22,9 +22,13 @@ router.get('/', function(req, res) {
         var jsonObj = {};
         jsonObj[user] = true;
         collection.find( jsonObj ).toArray( function(err, result) {
-            var data = Object.keys(result[0]);
-            for(var k in data) users.push(new Buffer(data[k], 'base64').toString('ascii'));
-            callback(result, db, users);
+		//console.log(result[0]);
+            Object.keys(result[0]).forEach(function(key) {
+			//console.log(key);
+			users.push(new Buffer(key, 'base64').toString('ascii'));
+		});
+		users.shift();
+		callback({},db,users);
         });
 
     };
@@ -36,12 +40,18 @@ router.get('/', function(req, res) {
         var buildCalendars = function (db, users, callback) {
             var collection = db.collection('calendars');
             var calendars = [];
-            for(var u in users) {
-                collection.find({id: u}, function (err, result) {
-                    calendars.push(result);
+            for(var i = 0, len = users.length; i < len; i++) {
+		var jsoni = {};
+		jsoni['id'] = users[i];
+                collection.find(jsoni).toArray(function (err, result) {
+			//console.log(err);
+			//console.log(result);
+                    	calendars.push(result[0]);
+			if(i >= users.length) {
+				callback(calendars, db);
+			}
                 });
             }
-            callback(calendars, db);
         };
 
         var getFreeTime = function(calendars, callback) {
@@ -55,10 +65,10 @@ router.get('/', function(req, res) {
 
 
 
-            var result = {};  // PUT RESULT OUTPUT HERE (in your chosen JSON format)
+            //var result = {};  // PUT RESULT OUTPUT HERE (in your chosen JSON format)
 
             //TESTING
-            result = calendars;
+            var result = calendars;
 
             //PUT CODE ABOVE HERE **********************
 
@@ -67,13 +77,14 @@ router.get('/', function(req, res) {
         };
 
         lookupUser(db, function (err, db, users) {
-            console.log(err);
-            buildCalendars(db, users, function(calendars, db){
+           //console.log(users);
+            buildCalendars(db, users, function(calendars, db) {
                 getFreeTime(calendars, function(output) {
-                    res.send(output);
+			//console.log(output)
+                    res.send(JSON.stringify(output));
                     res.end();
                 });
-                db.close();
+		db.close();
             });
         });
     });
