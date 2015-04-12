@@ -15,17 +15,26 @@ router.get('/', function(req, res) {
 
     var lookupUser = function (db, callback) {
         // Get the documents collection
-        console.log("PENIS");
+        //console.log("PENIS");
         var collection = db.collection('users');
 
         var jsonObj = {};
-        jsonObj[user] = true;
-        collection.find( jsonObj, function(err, result) {
+
+        jsonObj[new Buffer(user).toString('base64')] = true;
+
+        //console.log(jsonObj);
+        collection.find(jsonObj).toArray( function(err, result) {
+            //console.log(err);
+            //console.log(result);
             if (result.length > 0) {
                 //User has a group, proceed to show group
-                res.location('./showGroup');
+                res.writeHead(302, {
+                    'Location': './showGroup'
+                });
             } else {
-                res.location('./setGroup');
+                res.writeHead(302, {
+                    'Location': './setGroup'
+                });
             }
             callback(result, db);
         });
@@ -36,7 +45,7 @@ router.get('/', function(req, res) {
         console.log("Connected correctly to server");
 
         lookupUser(db, function (err, db) {
-            console.log(err);
+            //console.log(err);
             db.close();
             res.end();
         });

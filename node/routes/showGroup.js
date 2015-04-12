@@ -21,8 +21,9 @@ router.get('/', function(req, res) {
 
         var jsonObj = {};
         jsonObj[user] = true;
-        collection.find( jsonObj, function(err, result) {
-            for(var k in result) users.push(k);
+        collection.find( jsonObj ).toArray( function(err, result) {
+            var data = Object.keys(result[0]);
+            for(var k in data) users.push(new Buffer(data[k], 'base64').toString('ascii'));
             callback(result, db, users);
         });
 
@@ -55,6 +56,9 @@ router.get('/', function(req, res) {
 
 
             var result = {};  // PUT RESULT OUTPUT HERE (in your chosen JSON format)
+
+            //TESTING
+            result = calendars;
 
             //PUT CODE ABOVE HERE **********************
 
